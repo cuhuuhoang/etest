@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+
+development:
+  <<: *default
+  database: etest_development
+  username: rails
+  password: dbadminpass
+
+test:
+  <<: *default
+  database: etest_test
+  username: rails
+  password: dbadminpass
+
+production:
+  <<: *default
+  database: etest_production
+  username: rails
+  password: <%= ENV["DATABASE_RAILS_PASSWORD"] %>
