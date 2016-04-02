@@ -1,14 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Etest</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  <meta charset="UTF-8">
+  <title>AdminLTE | Dashboard</title>
+  <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+  <!-- bootstrap 3.0.2 -->
+  <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track' => true %>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
 </head>
-<body>
+<body class='skin-blue'>
+<!-- header logo: style can be found in header.less -->
+<header class='header'>
+  <a class='logo' href='/admin.html'>
+    <!-- Add the class icon to your logo image or logo icon to add the margining -->
+    eTest
+  </a>
+  <!-- Header Navbar: style can be found in header.less -->
+  <%= render 'layouts/header' %>
+</header>
+<div class='wrapper row-offcanvas row-offcanvas-left'>
+  <%= render 'layouts/left' %>
+  <!-- Right side column. Contains the navbar and content of the page -->
+  <aside class='right-side'>
 
-<%= yield %>
+    <!-- Content Header (Page header) -->
+    <section class='content-header'>
+      <h1>
+        Dashboard
+        <small>Control panel</small>
+      </h1>
+    </section>
+    <!-- Main content -->
+    <section class='content'>
+      <%= yield %>
+    </section>
+  </aside>
+</div>
+<!-- add new calendar event modal -->
+<div class="container">
+  <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <%= value %>
+      </div>
+  <% end %>
+</div>
 
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+
+<%= javascript_include_tag 'admin' %>
+<%= csrf_meta_tags %>
 </body>
 </html>
