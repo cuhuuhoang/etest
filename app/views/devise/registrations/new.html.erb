@@ -18,10 +18,10 @@
 
     <div class="form-inline">
       <label class="radio-inline">
-        <input type="radio" name="role" value="<%= Roles::Student%>">Học sinh
+        <%= f.radio_button :role, Roles::Student  %>Học sinh
       </label>
       <label class="radio-inline">
-        <input type="radio" name="role" value="<%= Roles::Teacher%>">Giáo viên
+        <%= f.radio_button :role, Roles::Teacher  %>Giáo viên
       </label>
     </div>
 
