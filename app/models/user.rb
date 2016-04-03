@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
   validates_uniqueness_of :username
-  validates_presence_of :full_name, :role
+  validates_presence_of :full_name
   validates :role, length: { in: 1..2 , too_long: "phải là giáo viên/học sinh",
                              too_short: "phải là giáo viên/học sinh"}
 end
