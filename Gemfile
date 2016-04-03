@@ -18,6 +18,8 @@ gem 'pg', '0.17.1'
 gem 'carrierwave', '0.10.0'
 gem 'mini_magick', '3.8.0'
 gem 'fog', '1.36.0'
+gem 'devise', '3.4.1'
+gem 'rails-i18n', '~> 4.0.0'
 
 group :development, :test do
   gem 'byebug', '3.4.0'
