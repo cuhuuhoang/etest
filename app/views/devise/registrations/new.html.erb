@@ -16,9 +16,13 @@
       <%= f.email_field :email, autofocus: true, :placeholder => "Email", :class => "form-control" %>
     </div>
 
-    <div class="form-group">
-      <input type="radio" name="role" value="<%= Roles::Student%>" class="form-control"> Học sinh <br/>
-      <input type="radio" name="role" value="<%= Roles::Teacher%>" class="form-control"> Giáo viên
+    <div class="form-inline">
+      <label class="radio-inline">
+        <input type="radio" name="role" value="<%= Roles::Student%>">Học sinh
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="role" value="<%= Roles::Teacher%>">Giáo viên
+      </label>
     </div>
 
     <div class="form-group">

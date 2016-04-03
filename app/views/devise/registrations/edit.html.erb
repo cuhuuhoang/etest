@@ -16,9 +16,13 @@
     <%= f.text_field :full_name %>
   </div>
 
-  <div class="field">
-    <input type="radio" name="role" value="<%= Roles::Student%>"> Học sinh <br/>
-    <input type="radio" name="role" value="<%= Roles::Teacher%>"> Giáo viên
+  <div class="form-inline">
+    <label class="radio-inline">
+      <input type="radio" name="role" value="<%= Roles::Student%>">Học sinh
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="role" value="<%= Roles::Teacher%>">Giáo viên
+    </label>
   </div>
 
   <div class="field">
