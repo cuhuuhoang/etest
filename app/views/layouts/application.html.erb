@@ -40,7 +40,7 @@
     <section class='content'>
       <div class="box-body">
         <% flash.each do |key, value| %>
-            <div class="alert alert-<%= key %> alert-dismissable">
+            <div class="alert alert-<%= display_key(key) %> alert-dismissable">
               <i class="fa fa-ban"></i>
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
               <%= value %>
