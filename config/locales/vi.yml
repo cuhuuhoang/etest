@@ -3,5 +3,3 @@ vi:
     models:
       user: người dùng
         username: tên đăng nhập
-        password: mật khẩu
-        confirmation_password: mật khẩu
