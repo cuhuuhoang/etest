@@ -1,7 +1,7 @@
-<p>Hello <%= @resource.email %>!</p>
+<p>Xin chào <%= @resource.email %>!</p>
 
-<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
+<p>Tài khoản của bạn đã bị khóa vì đăng nhập không thành công nhiều lần </p>
 
-<p>Click the link below to unlock your account:</p>
+<p>Hãy truy cập vào link dưới để mở khóa tài khoản</p>
 
-<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>
+<p><%= link_to 'Mở khóa tài khoản', unlock_url(@resource, unlock_token: @token) %></p>
