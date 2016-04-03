@@ -3,7 +3,7 @@ module ApplicationHelper
     if(key == "error" || key == "alert")
       "danger"
     elsif (key == "notice")
-      "warning";
+      "success";
     else
       key;
     end
