@@ -2,4 +2,8 @@ vi:
   activerecord:
     models:
       user: người dùng
+    attributes:
+      user:
         username: tên đăng nhập
+        password: mật khẩu
+        confirmation_password: mật khẩu
