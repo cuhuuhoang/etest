@@ -38,18 +38,22 @@
     </section>
     <!-- Main content -->
     <section class='content'>
+      <div class="box-body">
+        <% flash.each do |key, value| %>
+            <div class="alert alert-<%= key %> alert-dismissable">
+              <i class="fa fa-ban"></i>
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <%= value %>
+            </div>
+        <% end %>
+      </div>
       <%= yield %>
     </section>
   </aside>
 </div>
 <!-- add new calendar event modal -->
-<div class="container">
-  <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>">
-        <%= value %>
-      </div>
-  <% end %>
-</div>
+
+
 
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>-->
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>-->
