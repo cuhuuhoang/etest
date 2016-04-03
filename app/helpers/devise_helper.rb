@@ -13,7 +13,6 @@ module DeviseHelper
         <i class="fa fa-ban"></i>
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
           <div id="error_explanation">
-            <h3>#{sentence}</h3>
             <ul>#{messages}</ul>
           </div>
       </div>

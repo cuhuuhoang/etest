@@ -6,4 +6,6 @@ vi:
       user:
         username: tên đăng nhập
         password: mật khẩu
-        confirmation_password: mật khẩu
+        password_confirmation: mật khẩu
+        role: loại người dùng
+        full_name: tên đầy đủ
