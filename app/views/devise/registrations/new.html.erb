@@ -17,6 +17,11 @@
     </div>
 
     <div class="form-group">
+      <input type="radio" name="role" value="<%= Roles::Student%>"> Học sinh <br/>
+      <input type="radio" name="role" value="<%= Roles::Teacher%>"> Giáo viên
+    </div>
+
+    <div class="form-group">
       <%= f.password_field :password, autofocus: true, :placeholder => "Mật khẩu", :class => "form-control", autocomplete: "off" %>
     </div>
 

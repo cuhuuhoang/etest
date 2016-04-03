@@ -9,3 +9,8 @@ module ApplicationHelper
     end
   end
 end
+
+module Roles
+  Teacher = 1
+  Student = 2
+end

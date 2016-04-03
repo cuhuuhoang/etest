@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <input type="radio" name="role" value="<%= Roles::Student%>"> Học sinh <br/>
+    <input type="radio" name="role" value="<%= Roles::Teacher%>"> Giáo viên
+  </div>
+
+  <div class="field">
     <%= f.label :avatar %><br />
     <%= f.text_field :avatar %>
   </div>
