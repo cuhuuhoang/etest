@@ -5,6 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
   validates_uniqueness_of :username
   validates_presence_of :full_name
-  validates :role, length: { in: 1..2 , too_long: "phải là giáo viên/học sinh",
-                             too_short: "phải là giáo viên/học sinh"}
+  validates :role, :inclusion => { :in => 1..2, :message => "phải là giáo viên/học sinh" }
 end
