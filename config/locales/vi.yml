@@ -1,0 +1,4 @@
+vi:
+  activerecord:
+    models:
+      user: người dùng
