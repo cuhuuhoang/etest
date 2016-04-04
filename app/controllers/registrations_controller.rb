@@ -1,5 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  protected
+
   def settings
     @member = current_member
     if @member
