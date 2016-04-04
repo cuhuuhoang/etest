@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
                                                               :password_confirmation, :remember_me) }
       devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :password, :remember_me) }
       devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:full_name, :avatar, :skype, :facebook, :phone,
-                               :role, :address, :dob, :password, :password_confirmation, :current_password) }
+                               :address, :dob, :password, :password_confirmation, :current_password) }
     end
 
     def layout_by_resource
