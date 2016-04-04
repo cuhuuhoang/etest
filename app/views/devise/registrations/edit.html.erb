@@ -6,7 +6,7 @@
     <div class="box-body">
       <%= devise_error_messages! %>
       <div class="form-group">
-        <label for="email">Email: <%= current_user.email %></label>
+        <label for="email">Email: <%= current_user.email %></label> <br />
         <label for="username">Tên tài khoản: <%= current_user.username %></label>
       </div>
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
