@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations" }
   devise_scope :member do
-    root :to => 'devise/registrations#new'
+    # root :to => 'devise/registrations#new'
     get '/settings' => 'registrations#settings', as: :settings
   end
 
