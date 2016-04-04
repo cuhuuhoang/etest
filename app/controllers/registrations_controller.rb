@@ -1,6 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
+  before_filter :configure_permitted_parameters
 
-  params[:user].permit(:full_name, :avatar, :skype, :facebook, :phone, :address, :dob)
+
 
   def settings
     @user = current_user
@@ -12,6 +13,12 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:settings) do |u|
+      params[:user].permit(:full_name, :avatar, :skype, :facebook, :phone, :address, :dob)
+    end
+  end
 
   def update_resource(resource, params)
     resource.update_without_password(params)
