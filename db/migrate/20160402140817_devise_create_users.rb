@@ -40,7 +40,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :address
       t.datetime :dob
       t.integer   :role
-      t.boolean   :is_admin
+      t.boolean   :is_admin, default: false
 
       t.timestamps
     end
