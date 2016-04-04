@@ -19,25 +19,26 @@
         <ul class='dropdown-menu'>
           <!-- User image -->
           <li class='user-header bg-light-blue'>
-            <img alt='User Image' class='img-circle' src='http://localhost:3000/assets/avatar3-290a436f9541e2485341abd5a9377e2d.png'>
+            <img alt='User Image' class='img-circle' src='<%= current_user.avatar.url if current_user.avatar? %>'>
             <p>
               <small>
-                Member since
+                <!--Member since-->
+                <%= current_user.full_name %>
               </small>
             </p>
           </li>
           <!-- Menu Body -->
-          <li class='user-body'>
-            <div class='col-xs-4 text-center'>
-              <a href='#'>Followers</a>
-            </div>
-            <div class='col-xs-4 text-center'>
-              <a href='#'>Sales</a>
-            </div>
-            <div class='col-xs-4 text-center'>
-              <a href='#'>Friends</a>
-            </div>
-          </li>
+          <!--<li class='user-body'>-->
+            <!--<div class='col-xs-4 text-center'>-->
+              <!--<a href='#'>Followers</a>-->
+            <!--</div>-->
+            <!--<div class='col-xs-4 text-center'>-->
+              <!--<a href='#'>Sales</a>-->
+            <!--</div>-->
+            <!--<div class='col-xs-4 text-center'>-->
+              <!--<a href='#'>Friends</a>-->
+            <!--</div>-->
+          <!--</li>-->
           <!-- Menu Footer -->
           <li class='user-footer'>
             <div class='pull-left'>

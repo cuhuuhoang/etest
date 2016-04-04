@@ -5,7 +5,7 @@
     <!-- Sidebar user panel -->
     <div class='user-panel'>
       <div class='pull-left image'>
-        <img alt='User Image' class='img-circle' src='http://localhost:3000/assets/avatar3-290a436f9541e2485341abd5a9377e2d.png'>
+        <img alt='User Image' class='img-circle' src='<%= current_user.avatar.url if current_user.avatar? %>'>
       </div>
       <div class='pull-left info'>
         <p>

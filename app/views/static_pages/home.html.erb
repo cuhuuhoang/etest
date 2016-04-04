@@ -1,7 +1,7 @@
 <h1>Hi
   <% if user_signed_in? %>
-    <%= current_user.email %>
-    <%= link_to "Change your password", edit_user_registration_path %>
+    <%= current_user.full_name %> <br />
+    <%= link_to "Sửa thông tin cá nhân", edit_user_registration_path %>
   <% else %>
     there :)
   <% end %>
