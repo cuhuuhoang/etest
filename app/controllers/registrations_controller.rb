@@ -2,8 +2,8 @@ class RegistrationsController < Devise::RegistrationsController
 
 
   def settings
-    @member = current_member
-    if @member
+    @user = current_user
+    if @user
       render :settings
     else
       render file: 'public/404', status: 404, formats: [:html]
