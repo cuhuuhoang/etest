@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user = User.new(
+admin = User.new(
     :email                 => "huuhoangcu@gmail.com",
     :username              => "huuhoangcu",
     :full_name             => "Cù Hữu Hoàng",
@@ -15,5 +15,34 @@ user = User.new(
     :password              => "48342817",
     :password_confirmation => "48342817"
 )
-user.skip_confirmation!
-user.save!
+admin.skip_confirmation!
+admin.save!
+
+1.upto(1) do |i|
+  teacher = User.new(
+      :email                 => "teacher#{i}@exam.edu.vn",
+      :username              => "teacher#{i}",
+      :full_name             => "Test Teacher #{i}",
+      :role                  => 2,
+      :is_admin              => false,
+      :password              => "12345678",
+      :password_confirmation => "12345678"
+  )
+  teacher.skip_confirmation!
+  teacher.save!
+
+  student = User.new(
+      :email                 => "student#{i}@exam.edu.vn",
+      :username              => "student#{i}",
+      :full_name             => "Test Student #{i}",
+      :role                  => 1,
+      :is_admin              => false,
+      :password              => "12345678",
+      :password_confirmation => "12345678"
+  )
+  student.skip_confirmation!
+  student.save!
+
+  teacher.teach(student)
+end
+

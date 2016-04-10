@@ -47,5 +47,5 @@ Rails.application.configure do
   #config.assets.css_compressor = :yui
 
   #livereload
-  config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
+  # config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
 end
