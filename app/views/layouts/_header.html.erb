@@ -19,7 +19,11 @@
         <ul class='dropdown-menu'>
           <!-- User image -->
           <li class='user-header bg-light-blue'>
-            <img alt='User Image' class='img-circle' src='<%= current_user.avatar.url if current_user.avatar? %>'>
+            <% if current_user.avatar? %>
+                <img alt='User Image' class='img-circle' src='<%= current_user.avatar.url %>'>
+            <% else %>
+                <img alt='User Image' class='img-circle' src='<%= asset_path "default-avatar-min.png" %>'>
+            <% end %>
             <p>
               <small>
                 <!--Member since-->
