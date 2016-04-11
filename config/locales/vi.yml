@@ -2,6 +2,8 @@ vi:
   activerecord:
     models:
       user: Người dùng
+      teacher: Giáo viên
+      student: Học viên
     attributes:
       user:
         username: Tên đăng nhập
@@ -14,7 +16,6 @@ vi:
         current_password: Mật khẩu hiện tại
         phone: Số điện thoại
         avatar: Ảnh đại diện
-
     errors:
       messages:
         confirmation: không khớp

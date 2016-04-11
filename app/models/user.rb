@@ -5,40 +5,32 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
 
   # primary_key = :username
-
-  has_many :studentships, :foreign_key => "teacher_id", :class_name => "Teach", dependent: :destroy
-  has_many :teacherships, :foreign_key => "student_id", :class_name => "Teach", dependent: :destroy
-
-  has_many :teachers, :through => :teacherships, :source => :student
-  has_many :students, :through => :studentships, :source => :teacher
+  TYPES = [:teacher, :student]
 
   mount_uploader :avatar, PictureUploader
 
   validates_uniqueness_of :username
   validates_presence_of :full_name
-  validates :role, :inclusion => { :in => 1..2, :message => "phải là giáo viên/học sinh" }
   validate :avatar_size
 
+  def request_teach(other_user)
+    #check role
+    if role == Roles::Teacher && other_user.role == Roles::Student
 
-  def teach(student)
-    studentships.create(student_id: student.id)
+    elsif role == Roles::Student && other_user.role == Roles::Teacher
+
+    end
+    #create
   end
 
-  def unteach(student)
-    studentships.find_by(student_id: student.id).destroy
+  def confirm_teach(other_user)
+    #check equal id
+    #check who request
+    #update
   end
-
-  def teaching?(student)
-    students.include?(student)
-  end
-
-  def learning?(teacher)
-    teachers.include?(teacher)
-  end
-
 
   private
-
+  #sao ?
   #validate the sizes of an uploaded avatar
   def avatar_size
     if avatar.size > 5.megabytes
