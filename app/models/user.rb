@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :username
   validates_presence_of :full_name
+  validates_presence_of :type
   validate :avatar_size
 
   def request_teach(other_user)

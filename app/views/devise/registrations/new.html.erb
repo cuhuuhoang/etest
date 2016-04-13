@@ -18,10 +18,10 @@
 
     <div class="form-inline" id="role-item">
       <label class="radio-inline">
-        <%= f.radio_button :role, Roles::Student  %>Học sinh
+        <%= f.radio_button :type, Roles::Student  %>Học sinh
       </label>
       <label class="radio-inline">
-        <%= f.radio_button :role, Roles::Teacher  %>Giáo viên
+        <%= f.radio_button :type, Roles::Teacher  %>Giáo viên
       </label>
     </div>
 
@@ -48,9 +48,9 @@
     var confirmString = "";
     if (selected.length==0) {
       confirmString = "Bạn chưa chọn người dùng là giáo viên hay học sinh";
-    } else if(selected.val() == "1") {
+    } else if(selected.val() == "Teacher") {
       confirmString = "Bạn có chắc muốn lập người dùng là Giáo viên ?";
-    } else if(selected.val() == "2") {
+    } else if(selected.val() == "Student") {
       confirmString = "Bạn có chắc muốn lập người dùng là Học sinh ?";
     } else {
       confirmString = "Bạn chọn sai loại người dùng";

@@ -9,7 +9,7 @@ vi:
         username: Tên đăng nhập
         password: Mật khẩu
         password_confirmation: Mật khẩu xác nhận
-        role: Loại người dùng
+        type: Loại người dùng
         full_name: Tên đầy đủ
         address: Địa chỉ
         dob: Ngày sinh

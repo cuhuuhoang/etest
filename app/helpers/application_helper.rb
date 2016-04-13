@@ -11,6 +11,6 @@ module ApplicationHelper
 end
 
 module Roles
-  Teacher = 1
-  Student = 2
+  Teacher = "Teacher"
+  Student = "Student"
 end

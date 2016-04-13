@@ -10,7 +10,7 @@ admin = User.new(
     :email                 => "huuhoangcu@gmail.com",
     :username              => "huuhoangcu",
     :full_name             => "Cù Hữu Hoàng",
-    :role                  => 2,
+    :type                  => "Teacher",
     :is_admin              => true,
     :password              => "48342817",
     :password_confirmation => "48342817"
@@ -23,7 +23,7 @@ admin.save!
       :email                 => "teacher#{i}@exam.edu.vn",
       :username              => "teacher#{i}",
       :full_name             => "Test Teacher #{i}",
-      :role                  => 2,
+      :type                  => "Teacher",
       :is_admin              => false,
       :password              => "12345678",
       :password_confirmation => "12345678"
@@ -35,7 +35,7 @@ admin.save!
       :email                 => "student#{i}@exam.edu.vn",
       :username              => "student#{i}",
       :full_name             => "Test Student #{i}",
-      :role                  => 1,
+      :type                  => "Student",
       :is_admin              => false,
       :password              => "12345678",
       :password_confirmation => "12345678"
