@@ -39,8 +39,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :phone
       t.string   :address
       t.datetime :dob
-      t.string   :type
-      t.boolean   :is_admin, default: false
+      t.string   :type, default: "Student"
+      t.boolean  :is_admin, default: false
 
       t.timestamps
     end

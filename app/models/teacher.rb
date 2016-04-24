@@ -1,17 +1,8 @@
 class Teacher < User
   has_many :teaches, foreign_key: :teacher_id
   has_many :students, through: :teaches
-  # has_many :students_in_contact, -> { where('"teaches"."is_accept" = true ') }, through: :teaches, source: :student
+  has_many :students_in_contact, -> { in_contact }, through: :teaches, source: :student
   # has_many :students_requested, -> { where('"teaches"."is_accept" = true AND requester_id ') }, through: :teaches, source: :student
-  # has_many :students, through: :teaches do
-  #   def in_contact
-  #     where teaches: { is_accept: true }
-  #   end
-  #
-  #   def requested
-  #     where teaches: { is_accept: true, requester_id: teacher_id}
-  #   end
-  # end
 
   def students_in_contact
     students.where("teaches.is_accept = ?", true)
@@ -22,7 +13,7 @@ class Teacher < User
   end
 
   def students_unaccepted
-    students.where("teaches.is_accept = ? and requester_id = teaches.student_id", false, id)
+    students.where("teaches.is_accept = ? and requester_id = teaches.student_id", false)
   end
 
   def is_student_in_contact?(student)

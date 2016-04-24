@@ -4,4 +4,6 @@ class Teach < ActiveRecord::Base
   validates :teacher_id, presence: true
   validates :student_id, presence: true
 
+  scope :in_contact, -> { where is_accept: true }
+  scope :requested, -> (user_id) { where is_accept: false, requester_id: user_id}
 end

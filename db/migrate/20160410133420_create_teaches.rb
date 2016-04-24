@@ -4,7 +4,7 @@ class CreateTeaches < ActiveRecord::Migration
       t.integer :teacher_id
       t.integer :student_id
       t.integer :requester_id
-      t.boolean :is_accept
+      t.boolean :is_accept, default: false
 
       t.timestamps null: false
     end

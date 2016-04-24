@@ -33,7 +33,7 @@
     <!-- /.search form -->
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class='sidebar-menu'>
-      <% if current_user.role == Roles::Teacher %>
+      <% if current_user.type == Roles::Teacher %>
         <li>
           <a href='#'>
             <i class='fa fa-street-view'></i>
