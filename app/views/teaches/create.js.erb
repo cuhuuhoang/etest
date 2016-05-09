@@ -1,0 +1,2 @@
+$("#user-<%= @user.id %>").replaceWith("<%= escape_javascript(render :partial => "user_row", :locals => {:user => @user }) %>");
+$('#pending_stats').html("<%= escape_javascript(render :partial => "pending_stats") %>");

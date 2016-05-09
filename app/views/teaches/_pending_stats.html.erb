@@ -1,0 +1,9 @@
+<% if current_user.type == "Teacher" %>
+    <%= link_to "Chưa trả lời (#{current_user.students_unaccepted.size})", teaches_url(type: :unaccepted), class: "btn btn-warning btn-lg" %>
+    <%= link_to "Đã gửi yêu cầu (#{current_user.students_requested.size})", teaches_url(type: :requested), class: "btn btn-primary btn-lg" %>
+    <%= link_to "Đang dạy (#{current_user.students_in_contact.size})", teaches_url(type: :in_contact), class: "btn btn-success btn-lg" %>
+<% else %>
+    <%= link_to "Chưa trả lời (#{current_user.teachers_unaccepted.size})", teaches_url(type: :unaccepted), class: "btn btn-warning btn-lg" %>
+    <%= link_to "Đã gửi yêu cầu (#{current_user.teachers_requested.size})", teaches_url(type: :requested), class: "btn btn-primary btn-lg" %>
+    <%= link_to "Đang học (#{current_user.teachers_in_contact.size})", teaches_url(type: :in_contact), class: "btn btn-success btn-lg" %>
+<% end %>

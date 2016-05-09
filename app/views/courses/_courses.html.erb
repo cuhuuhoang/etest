@@ -1,0 +1,21 @@
+<table id="courses" class="table table-hover">
+  <tbody><tr>
+    <th>Tên</th>
+    <th>Chi tiết</th>
+    <th>Số học viên</th>
+    <th>Quản lý học viên</th>
+    <th>Thay đổi thông tin</th>
+    <th>Xóa khóa học</th>
+  </tr>
+  <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.name %></td>
+        <td><%= course.description %></td>
+        <td><%= course.students.size %></td>
+        <td><%= link_to 'Quản lý', course_student_path(course) %></td>
+        <td><%= link_to 'Sửa', edit_course_path(course) %></td>
+        <td><%= link_to 'Xóa', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

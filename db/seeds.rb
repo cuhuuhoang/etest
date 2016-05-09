@@ -18,7 +18,7 @@ admin = User.new(
 admin.skip_confirmation!
 admin.save!
 
-1.upto(10) do |i|
+1.upto(3) do |i|
   teacher = User.new(
       :email                 => "teacher#{i}@exam.edu.vn",
       :username              => "teacher#{i}",
@@ -30,6 +30,20 @@ admin.save!
   )
   teacher.skip_confirmation!
   teacher.save!
+
+  course1 = Course.new(
+      :name                 => "Lớp 1 giáo viên #{i}",
+      :description          => "Đây là lớp 1 giáo viên #{i}",
+      :teacher_id           => teacher.id
+  )
+  course1.save!
+
+  course2 = Course.new(
+      :name                 => "Lớp 2 giáo viên #{i}",
+      :description          => "Đây là lớp 2 giáo viên #{i}",
+      :teacher_id           => teacher.id
+  )
+  course2.save!
 
   1.upto(100) do |j|
     student = User.new(
@@ -46,6 +60,13 @@ admin.save!
 
     teacher.teach(student)
     student.learn(teacher)
+
+    if j < 71
+      student.enroll_course(course1)
+    else
+      student.enroll_course(course2)
+    end
+
   end
 
   101.upto(170) do |j|
@@ -79,6 +100,7 @@ admin.save!
 
     teacher.teach(student)
   end
+
 
 end
 

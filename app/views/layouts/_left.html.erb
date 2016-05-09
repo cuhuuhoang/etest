@@ -33,21 +33,18 @@
     <!-- /.search form -->
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class='sidebar-menu'>
-      <% if current_user.type == Roles::Teacher %>
-        <li>
-          <a href='#'>
-            <i class='fa fa-street-view'></i>
-            <span>Danh sách học sinh</span>
-          </a>
-        </li>
-      <% else %>
-        <li>
-          <a href='#'>
-            <i class='fa fa-star'></i>
-            <span>Danh sách giáo viên</span>
-          </a>
-        </li>
-      <% end %>
+      <li>
+        <a href='<%= teaches_path %>'>
+          <i class='fa fa-group'></i>
+          <span>Danh sách <%= opposite_type %></span>
+        </a>
+      </li>
+      <li>
+        <a href='<%= courses_path %>'>
+          <i class='fa fa-star'></i>
+          <span>Danh sách khóa học</span>
+        </a>
+      </li>
       <li class='active'>
         <a href='/admin.html'>
           <i class='fa fa-dashboard'></i>

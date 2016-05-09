@@ -1,0 +1,4 @@
+$('#courses').html("<%= escape_javascript(render :partial => "courses") %>");
+$('#paginator').html("<%= escape_javascript(paginate(@courses, :remote => true)) %>");
+$('#courses_info').html("<%= escape_javascript(page_entries_info @courses, :entry_name => 'Khóa học') %>");
+

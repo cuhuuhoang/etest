@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  get 'teaching/index'
+  get 'enroll/create'
 
-  get 'teaching/teach'
+  get 'enroll/destroy'
 
-  get 'teaching/study'
+  resources :teaches, only: [:index, :create, :destroy]
+  get 'teaches/search'
+  resources :courses
+  get 'courses/:id/student', to: 'courses#student',  as: 'course_student'
 
-  get 'teaching/delete'
+  resources :enrolls, only: [:create, :destroy]
 
   devise_for :users, :controllers => { :registrations => "registrations" }
   # devise_scope :user do
