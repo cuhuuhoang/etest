@@ -1,5 +1,4 @@
 <% provide(:title, "Danh sách khóa học") %>
-<p id="notice"><%= notice %></p>
 <div class="row">
   <div class="col-xs-12">
     <div class="box">
@@ -34,10 +33,11 @@
               </div>
             </div>
           </div>
+          <br />
+          <%= link_to 'Thêm khóa học', new_course_path %>
         </div>
       </div>
     </div><!-- /.box -->
   </div>
 </div>
 
-<%= link_to 'Thêm khóa học', new_course_path %>

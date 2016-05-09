@@ -4,6 +4,7 @@ vi:
       user: Người dùng
       teacher: Giáo viên
       student: Học viên
+      course: Khóa học
     attributes:
       user:
         username: Tên đăng nhập
@@ -16,6 +17,10 @@ vi:
         current_password: Mật khẩu hiện tại
         phone: Số điện thoại
         avatar: Ảnh đại diện
+      course:
+        name: Tên khóa học
+        description: Thông tin chi tiết
+        closed: Đã đóng
     errors:
       messages:
         confirmation: không khớp

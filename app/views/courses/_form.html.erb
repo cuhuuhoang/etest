@@ -1,22 +1,42 @@
-<%= form_for(@course) do |f| %>
-  <% if @course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
-
-      <ul>
-      <% @course.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <%= f.label :name %>
-  <%= f.text_field :name, class: 'form-control' %>
-
-  <%= f.label :description %>
-  <%= f.text_field :description, class: 'form-control' %>
-
-  <div class="actions">
-    <%= f.submit %>
+<div class="box box-primary">
+  <div class="box-header">
+    <h3 class="box-title">Thông tin khóa học</h3>
   </div>
-<% end %>
+  <%= form_for(@course) do |f| %>
+      <div class="box-body">
+        <% if @course.errors.any? %>
+            <div id="error_explanation">
+              <h2>Có <%= @course.errors.count %> lỗi làm khóa học không lưu được:</h2>
+
+              <ul>
+                <% @course.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.label :name %><br />
+          <%= f.text_field :name, :class => "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :description %><br />
+          <%= f.text_field :description, :class => "form-control" %>
+        </div>
+
+
+        <div class="form-group">
+          <%= f.label :closed %><br />
+          <%= f.check_box :closed, :class => "form-control" %>
+        </div>
+
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Xác nhận</button>
+        </div>
+        <%= link_to "Quay lại", courses_path %>
+      </div>
+  <% end %>
+</div>
+
