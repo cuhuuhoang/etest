@@ -47,6 +47,7 @@ class CoursesController < ApplicationController
   # PATCH/PUT /courses/1
   # PATCH/PUT /courses/1.json
   def update
+    return unless current_user.id == @course.teacher_id
     respond_to do |format|
       if @course.update(course_params)
         format.html { redirect_to courses_url, notice: 'Khóa học đã được cập nhật.' }

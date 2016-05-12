@@ -1,0 +1,42 @@
+<div class="box box-primary">
+  <div class="box-header">
+    <h3 class="box-title">Thông tin bài kiểm tra</h3>
+  </div>
+  <%= form_for(@test) do |f| %>
+      <div class="box-body">
+
+        <%= render :partial => "layouts/errors", :locals => {:errors => @test.errors }%>
+        <!--:name, :description, :question, :answer, :time-->
+        <div class="form-group">
+          <%= f.label :name %><br />
+          <%= f.text_field :name, :class => "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :description %><br />
+          <%= f.text_field :description, :class => "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :question %><br />
+          <%= f.text_field :question, :class => "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :answer %><br />
+          <%= f.text_field :answer, :class => "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :time %><br />
+          <%= f.text_field :time, :class => "form-control" %>
+        </div>
+
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Xác nhận</button>
+        </div>
+        <%= link_to "Quay lại", tests_path %>
+      </div>
+  <% end %>
+</div>
+

@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :courses
   get 'courses/:id/student', to: 'courses#student',  as: 'course_student'
 
+  resources :tests
+
+
   resources :enrolls, only: [:create, :destroy]
 
   devise_for :users, :controllers => { :registrations => "registrations" }

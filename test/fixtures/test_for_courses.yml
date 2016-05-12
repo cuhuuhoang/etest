@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shown: false
+  open_date: 2016-05-09 18:05:35
+
+two:
+  shown: false
+  open_date: 2016-05-09 18:05:35

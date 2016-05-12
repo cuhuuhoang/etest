@@ -1,0 +1,15 @@
+<% provide(:title, "Sửa bài kiểm tra") %>
+
+<%= render 'form' %>
+
+<div class="box box-primary">
+  <div class="box-header">
+    <h3 class="box-title">Xóa bài kiểm tra</h3>
+  </div>
+  <div class="box-body">
+    <div class="form-group">
+      Bạn có muốn xóa bài kiểm tra này ? Bài kiểm tra bị xóa sẽ không thể lấy lại
+      <p><%= button_to "Xóa bài kiểm tra", @test, data: { confirm: "Bạn có chắc chắn không?" }, method: :delete, :class => "btn btn-primary" %></p>
+    </div>
+  </div>
+</div>

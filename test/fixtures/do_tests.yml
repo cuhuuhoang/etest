@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  answer: MyText
+  current_score: 1.5
+  first_score: 1.5
+  highest_score: 1.5
+  test_id: 
+  student_id: 
+
+two:
+  answer: MyText
+  current_score: 1.5
+  first_score: 1.5
+  highest_score: 1.5
+  test_id: 
+  student_id: 

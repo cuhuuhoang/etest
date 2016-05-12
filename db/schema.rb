@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160508032046) do
+ActiveRecord::Schema.define(version: 20160509110911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,22 @@ ActiveRecord::Schema.define(version: 20160508032046) do
     t.datetime "updated_at",                  null: false
   end
 
+  add_index "courses", ["teacher_id"], name: "index_courses_on_teacher_id", using: :btree
+
+  create_table "do_tests", force: :cascade do |t|
+    t.text     "answer"
+    t.float    "current_score"
+    t.float    "first_score"
+    t.float    "highest_score"
+    t.integer  "test_id"
+    t.integer  "student_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "do_tests", ["student_id"], name: "index_do_tests_on_student_id", using: :btree
+  add_index "do_tests", ["test_id"], name: "index_do_tests_on_test_id", using: :btree
+
   create_table "enrolls", force: :cascade do |t|
     t.integer  "course_id"
     t.integer  "student_id"
@@ -33,6 +49,7 @@ ActiveRecord::Schema.define(version: 20160508032046) do
   end
 
   add_index "enrolls", ["course_id"], name: "index_enrolls_on_course_id", using: :btree
+  add_index "enrolls", ["student_id"], name: "index_enrolls_on_student_id", using: :btree
 
   create_table "teaches", force: :cascade do |t|
     t.integer  "teacher_id"
@@ -42,6 +59,37 @@ ActiveRecord::Schema.define(version: 20160508032046) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end
+
+  add_index "teaches", ["student_id"], name: "index_teaches_on_student_id", using: :btree
+  add_index "teaches", ["teacher_id"], name: "index_teaches_on_teacher_id", using: :btree
+
+  create_table "test_for_courses", force: :cascade do |t|
+    t.boolean  "shown_answer", default: false
+    t.datetime "open_date"
+    t.integer  "test_id"
+    t.integer  "course_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "test_for_courses", ["course_id"], name: "index_test_for_courses_on_course_id", using: :btree
+  add_index "test_for_courses", ["test_id"], name: "index_test_for_courses_on_test_id", using: :btree
+
+  create_table "tests", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.text     "question"
+    t.text     "question_index"
+    t.text     "answer"
+    t.text     "answer_index"
+    t.string   "type"
+    t.integer  "time"
+    t.integer  "teacher_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "tests", ["teacher_id"], name: "index_tests_on_teacher_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",        null: false
@@ -81,5 +129,4 @@ ActiveRecord::Schema.define(version: 20160508032046) do
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
-  add_foreign_key "enrolls", "courses"
 end

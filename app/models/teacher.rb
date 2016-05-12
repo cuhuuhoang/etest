@@ -1,7 +1,8 @@
 class Teacher < User
-  has_many :teaches, foreign_key: :teacher_id, dependent: :destroy
+  has_many :teaches, dependent: :destroy
   has_many :students, through: :teaches
-  has_many :courses, foreign_key: :teacher_id, dependent: :destroy
+  has_many :courses, dependent: :destroy
+  has_many :tests, dependent: :destroy
   # has_many :students_in_contact, -> { in_contact }, through: :teaches, source: :student
   # has_many :students_requested, -> { where('"teaches"."is_accept" = true AND requester_id ') }, through: :teaches, source: :student
 

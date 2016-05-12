@@ -3,7 +3,7 @@ class TeachesController < ApplicationController
   def index(page_size: 10)
     search_string = "%#{params[:q]}%"
     types = %w(in_contact requested unaccepted)
-    params[:type] = types[0] unless types.include? params[:type].to_s
+    params[:type] = types[2] unless types.include? params[:type].to_s
 
     if current_user.type == "Teacher"
       method = "students_#{params[:type]}"

@@ -18,7 +18,7 @@ admin = User.new(
 admin.skip_confirmation!
 admin.save!
 
-1.upto(3) do |i|
+1.upto(2) do |i|
   teacher = User.new(
       :email                 => "teacher#{i}@exam.edu.vn",
       :username              => "teacher#{i}",
@@ -68,6 +68,17 @@ admin.save!
     end
 
   end
+
+  1.upto(100) do |j|
+    test = Test.new(
+        :name                 => "Test #{j} giáo viên #{i}",
+        :description          => "Đây là Test #{j} giáo viên #{i}",
+        :teacher_id           => teacher.id
+    )
+    test.save!
+  end
+
+
 
   101.upto(170) do |j|
     student = User.new(

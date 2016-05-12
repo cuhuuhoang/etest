@@ -1,0 +1,38 @@
+<% provide(:title, "Danh sách bài kiểm tra") %>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <div class="box-tools">
+          <div class="input-group">
+            <input type="text" name="q" class="form-control input-sm pull-right" style="width: 150px;" data-remote="true" placeholder="Tìm kiếm">
+            <div class="input-group-btn">
+              <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.box-header -->
+      <div class="box-body table-responsive no-padding">
+        <%= render :partial => "tests" %>
+      </div><!-- /.box-body -->
+      <div class="box-footer clearfix">
+        <div class="row">
+          <div class="col-xs-4">
+            <div class="dataTables_info" id="tests_info"><%= page_entries_info @tests, :entry_name => 'Bài kiểm tra' %></div>
+          </div>
+          <div class="col-xs-8">
+            <div class="dataTables_paginate paging_bootstrap text-right">
+              <div id="paginator">
+                <%= paginate @tests, :remote => true %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <%= link_to 'Thêm bài kiểm tra', new_test_path %>
+      </div>
+    </div>
+  </div><!-- /.box -->
+</div>
+</div>
+

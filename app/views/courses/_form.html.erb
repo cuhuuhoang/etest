@@ -4,17 +4,7 @@
   </div>
   <%= form_for(@course) do |f| %>
       <div class="box-body">
-        <% if @course.errors.any? %>
-            <div id="error_explanation">
-              <h2>Có <%= @course.errors.count %> lỗi làm khóa học không lưu được:</h2>
-
-              <ul>
-                <% @course.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                <% end %>
-              </ul>
-            </div>
-        <% end %>
+        <%= render :partial => "layouts/errors", :locals => {:errors => @course.errors }%>
 
         <div class="form-group">
           <%= f.label :name %><br />

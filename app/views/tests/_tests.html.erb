@@ -1,0 +1,17 @@
+<table id="tests" class="table table-hover">
+  <tbody><tr>
+    <th>Tên</th>
+    <th>Chi tiết</th>
+    <th>Ngày tạo</th>
+    <th>Thay đổi thông tin</th>
+  </tr>
+  <% @tests.each do |test| %>
+      <tr>
+        <td><%= test.name %></td>
+        <td><%= test.description %></td>
+        <td><%= test.created_at.strftime("%F") %></td>
+        <td><%= link_to 'Sửa', edit_test_path(test) %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

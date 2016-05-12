@@ -5,6 +5,7 @@ vi:
       teacher: Giáo viên
       student: Học viên
       course: Khóa học
+      test: Bài kiểm tra
     attributes:
       user:
         username: Tên đăng nhập
@@ -21,6 +22,12 @@ vi:
         name: Tên khóa học
         description: Thông tin chi tiết
         closed: Đã đóng
+      test:
+        name: Tên bài kiểm tra
+        description: Thông tin chi tiết
+        question: Câu hỏi
+        answer: Câu trả lời
+        time: Thời gian (phút)
     errors:
       messages:
         confirmation: không khớp
