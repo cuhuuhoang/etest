@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-xs-5">
+    <div id="example1_length" class="dataTables_length">
+      <label>
+        <select size="1" name="page_size" aria-controls="example1" data-remote="true">
+          <option value="10" selected="selected">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+        hàng mỗi trang
+      </label>
+    </div>
+  </div>
+  <div class="col-xs-3 text-right">
+    <% if in_course %>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="in_course" data-remote="true">
+          <b>Trong lớp</b>
+        </label>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-xs-4">
+    <div class="input-group" style="padding-bottom: 10px;">
+
+      <input type="text" name="q" class="form-control input-sm pull-right" data-remote="true" placeholder="Tìm kiếm">
+      <div class="input-group-btn">
+        <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+</div>

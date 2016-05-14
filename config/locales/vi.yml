@@ -25,8 +25,8 @@ vi:
       test:
         name: Tên bài kiểm tra
         description: Thông tin chi tiết
-        question: Câu hỏi
-        answer: Câu trả lời
+        questions: Câu hỏi
+        answers: Câu trả lời
         time: Thời gian (phút)
     errors:
       messages:

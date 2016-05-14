@@ -1,16 +1,17 @@
 class TeachesController < ApplicationController
 
-  def index(page_size: 10)
+  def index
     search_string = "%#{params[:q]}%"
     types = %w(in_contact requested unaccepted)
     params[:type] = types[2] unless types.include? params[:type].to_s
+    params[:page_size] = 10 if params[:page_size].nil?
 
     if current_user.type == "Teacher"
       method = "students_#{params[:type]}"
-      @users = current_user.try(method.to_sym).where("full_name like ? OR username like ? OR email like ?", search_string,search_string,search_string).page(params[:page]).per(page_size)
+      @users = current_user.try(method.to_sym).where("full_name like ? OR username like ? OR email like ?", search_string,search_string,search_string).page(params[:page]).per(params[:page_size])
     else
       method = "teachers_#{params[:type]}"
-      @users = current_user.try(method.to_sym).where("full_name like ? OR username like ? OR email like ?", search_string,search_string,search_string).page(params[:page]).per(page_size)
+      @users = current_user.try(method.to_sym).where("full_name like ? OR username like ? OR email like ?", search_string,search_string,search_string).page(params[:page]).per(params[:page_size])
     end
 
 
@@ -21,12 +22,13 @@ class TeachesController < ApplicationController
     end
   end
 
-  def search(page_size: 10)
+  def search
     search_string = "%#{params[:q]}%"
+    params[:page_size] = 10 if params[:page_size].nil?
     if current_user.type == "Teacher"
-      @users = Student.where("full_name like ? OR username like ? OR email like ?", search_string,search_string,search_string).page(params[:page]).per(page_size)
+      @users = Student.where("full_name like ? OR username like ? OR email like ?", search_string,search_string,search_string).page(params[:page]).per(params[:page_size])
     else
-      @users = Teacher.where("full_name like ? OR username like ? OR email like ?", search_string,search_string,search_string).page(params[:page]).per(page_size)
+      @users = Teacher.where("full_name like ? OR username like ? OR email like ?", search_string,search_string,search_string).page(params[:page]).per(params[:page_size])
     end
 
     respond_to do |format|

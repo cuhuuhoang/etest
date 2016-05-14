@@ -6,7 +6,9 @@ class Student < User
   has_many :courses, through: :enrolls
 
   has_many :do_tests, dependent: :destroy
-  has_many :tests, through: :do_tests
+  has_many :working_tests, through: :do_tests, source: :tests
+
+  has_many :available_tests, through: :courses, source: :tests
   # has_many :teachers_in_contact, -> { where('"teaches"."is_accept" = true ') }, through: :teaches, source: :teacher
 
   def teachers_in_contact

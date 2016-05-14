@@ -5,14 +5,7 @@
       <div class="box-header">
         <!--<h3 class="box-title">Danh sách khóa học</h3>-->
         <div class="box-tools">
-          <!--<form action="<%= courses_path(@course) %>" method="get" remote="true">-->
-            <div class="input-group">
-              <input type="text" name="q" class="form-control input-sm pull-right" style="width: 150px;" data-remote="true" placeholder="Tìm kiếm">
-              <div class="input-group-btn">
-                <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-              </div>
-            </div>
-          <!--</form>-->
+          <%= render :partial => "layouts/filter_header", :locals => {:in_course => false }%>
         </div>
       </div><!-- /.box-header -->
       <div class="box-body table-responsive no-padding">
@@ -32,7 +25,9 @@
             </div>
           </div>
           <br />
-          <%= link_to 'Thêm khóa học', new_course_path %>
+          <% if @current_user.type == "Teacher" %>
+           <%= link_to 'Thêm khóa học', new_course_path %>
+          <% end %>
         </div>
       </div>
     </div><!-- /.box -->

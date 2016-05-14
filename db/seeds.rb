@@ -73,7 +73,8 @@ admin.save!
     test = Test.new(
         :name                 => "Test #{j} giáo viên #{i}",
         :description          => "Đây là Test #{j} giáo viên #{i}",
-        :teacher_id           => teacher.id
+        :teacher_id           => teacher.id,
+        :time                 => 90
     )
     test.save!
   end

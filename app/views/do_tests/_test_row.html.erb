@@ -1,0 +1,12 @@
+<tr class="<%= cycle('even', 'odd') %>" id="test-<%= test.id %>">
+  <td><%= test.name %></td>
+  <td><%= test.description %></td>
+  <td><%= test.teacher.full_name %></td>
+  <td><%= test.created_at %></td>
+  <td>
+    <%= form_for(current_user.do_tests.build) do |f| %>
+        <div><%= hidden_field_tag :test_id, test.id %></div>
+        <%= f.submit "Làm bài", class: "btn btn-primary btn-sm" %>
+    <% end %>
+  </td>
+</tr>

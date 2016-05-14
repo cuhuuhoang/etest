@@ -1,8 +1,8 @@
-<% provide(:title, 'Học viên trong lớp') %>
+<% provide(:title, 'Quản lý bài kiểm tra') %>
 
 <div class="row">
   <section class="col-lg-12 connectedSortable ui-sortable">
-    <div class="box box-primary" id="add-user">
+    <div class="box box-primary" id="add-test">
       <div class="box-header" style="cursor: move;">
         <!-- tools box -->
         <div class="pull-right box-tools">
@@ -12,7 +12,7 @@
         </div><!-- /. tools -->
         <i class="fa fa-cloud"></i>
 
-        <%= render :partial => "courses/users/total_users", :locals => {:course => @course } %>
+        <%= render :partial => "courses/tests/total_tests", :locals => {:course => @course } %>
 
       </div><!-- /.box-header -->
       <div class="box-body table-responsive">
@@ -21,15 +21,15 @@
         <br />
         <div class="dataTables_wrapper form-inline" role="grid">
           <%= render :partial => "layouts/filter_header", :locals => {:in_course => true }%>
-          <%= render :partial => "courses/users/users", :locals => {:course => @course }%>
+          <%= render :partial => "courses/tests/tests", :locals => {:course => @course }%>
           <div class="row">
             <div class="col-xs-4">
-              <div class="dataTables_info" id="users_info"><%= page_entries_info @users, :entry_name => opposite_type %></div>
+              <div class="dataTables_info" id="tests_info"><%= page_entries_info @tests, :entry_name => 'Bài kiểm tra' %></div>
             </div>
             <div class="col-xs-8">
               <div class="dataTables_paginate paging_bootstrap text-right">
                 <div id="paginator">
-                  <%= paginate @users, :remote => true %>
+                  <%= paginate @tests, :remote => true %>
                 </div>
               </div>
             </div>

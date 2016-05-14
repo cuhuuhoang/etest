@@ -1,3 +1,5 @@
+<% provide(:title, "Làm bài kiểm tra") %>
+
 <div class="box box-primary">
   <div class="box-header">
     <h3 class="box-title">Thông tin bài kiểm tra</h3>
@@ -72,12 +74,12 @@
       next_question = $("#questions_group .question_item").length +1;
       $("#questions_group").append("" +
           "<div class=\"row question_item\">"+
-            "<div class=\"col-sm-1\">Câu "+next_question +": </div>"+
-            "<div class=\"col-sm-11\">"+
-              "<input class=\"form-control\" type=\"text\" name=\"questions["+next_question+"]\" id=\"test_question"+next_question+"\" >"+
-            "</div>"+
+          "<div class=\"col-sm-1\">Câu "+next_question +": </div>"+
+          "<div class=\"col-sm-11\">"+
+          "<input class=\"form-control\" type=\"text\" name=\"questions["+next_question+"]\" id=\"test_question"+next_question+"\" >"+
           "</div>"+
-        "");
+          "</div>"+
+          "");
     }
   }
 

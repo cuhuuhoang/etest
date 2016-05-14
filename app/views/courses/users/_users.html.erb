@@ -10,7 +10,7 @@
   </thead>
   <tbody role="alert" aria-live="polite" aria-relevant="all">
     <% @users.each do |user| %>
-        <%= render :partial => "user_row", :locals => {:user => user, :course => course }%>
+        <%= render :partial => "courses/users/user_row", :locals => {:user => user, :course => course }%>
     <% end %>
   </tbody>
 </table>

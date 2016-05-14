@@ -1,0 +1,15 @@
+<table id="tests" class="table table-bordered table-striped dataTable" aria-describedby="example1_info">
+  <thead>
+  <tr role="row">
+    <th rowspan="1" colspan="1">Tên</th>
+    <th rowspan="1" colspan="1">Chi tiết</th>
+    <th rowspan="1" colspan="1">Ngày tạo</th>
+    <th rowspan="1" colspan="1"></th>
+  </tr>
+  </thead>
+  <tbody role="alert" aria-live="polite" aria-relevant="all">
+    <% @tests.each do |test| %>
+        <%= render :partial => "courses/tests/test_row", :locals => {:test => test, :course => course }%>
+    <% end %>
+  </tbody>
+</table>

@@ -44,30 +44,7 @@
       </div><!-- /.box-header -->
       <div class="box-body table-responsive">
         <div id="example1_wrapper" class="dataTables_wrapper form-inline" role="grid">
-          <div class="row">
-            <div class="col-xs-6">
-              <div id="example1_length" class="dataTables_length">
-                <label>
-                  <select size="1" name="page_size" aria-controls="example1" data-remote="true">
-                    <option value="10" selected="selected">10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                  </select>
-                  <%= opposite_type %> mỗi trang
-                </label>
-              </div>
-            </div>
-            <div class="col-xs-6 text-right">
-              <div class="input-group">
-                <input type="text" name="q" class="form-control input-sm pull-right" style="width: 150px;" data-remote="true" placeholder="Tìm kiếm">
-                <div class="input-group-btn">
-                  <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-                </div>
-              </div>
-              <br />
-            </div>
-          </div>
+          <%= render :partial => "layouts/filter_header", :locals => {:in_course => false }%>
           <%= render 'users'%>
           <div class="row">
             <div class="col-xs-4">

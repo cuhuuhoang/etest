@@ -1,0 +1,23 @@
+<tr class="<%= cycle('even', 'odd') %>" id="user-<%= user.id %>">
+  <td><%= user.full_name %></td>
+  <td><%= user.email %></td>
+  <td><%= user.username %></td>
+  <td><%= user.created_at %></td>
+  <td>
+    <% unless current_user.id == user.id %>
+        <% if current_user.type == "Teacher" && user.type == "Student" && course.teacher_id == current_user.id && current_user.is_student_in_contact?(user.id)%>
+            <% if user.is_student_in_course?(course) %>
+                <%= form_for(course.enrolls.find_by(student_id: user.id), html: {method: :delete }, remote:true) do |f| %>
+                    <%= f.submit "Xóa khỏi lớp", class: "btn btn-danger btn-sm" %>
+                <% end %>
+            <% else %>
+                <%= form_for(course.enrolls.build, remote:true) do |f| %>
+                    <div><%= hidden_field_tag :student_id, user.id %></div>
+                    <div><%= hidden_field_tag :course_id, course.id %></div>
+                    <%= f.submit "Thêm vào lớp", class: "btn btn-success btn-sm" %>
+                <% end %>
+            <% end %>
+        <% end %>
+    <% end %>
+  </td>
+</tr>

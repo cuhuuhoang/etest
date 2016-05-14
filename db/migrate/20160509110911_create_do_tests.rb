@@ -1,7 +1,7 @@
 class CreateDoTests < ActiveRecord::Migration
   def change
     create_table :do_tests do |t|
-      t.text :answer
+      t.text :answers
       t.float :current_score
       t.float :first_score
       t.float :highest_score

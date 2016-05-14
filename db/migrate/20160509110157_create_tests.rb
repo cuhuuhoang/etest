@@ -3,9 +3,9 @@ class CreateTests < ActiveRecord::Migration
     create_table :tests do |t|
       t.string :name
       t.text :description
-      t.text :question
+      t.text :questions
       t.text :question_index
-      t.text :answer
+      t.text :answers
       t.text :answer_index
       t.string :type
       t.integer :time

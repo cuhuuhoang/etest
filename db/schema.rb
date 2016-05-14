@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20160509110911) do
   add_index "courses", ["teacher_id"], name: "index_courses_on_teacher_id", using: :btree
 
   create_table "do_tests", force: :cascade do |t|
-    t.text     "answer"
+    t.text     "answers"
     t.float    "current_score"
     t.float    "first_score"
     t.float    "highest_score"
@@ -78,9 +78,9 @@ ActiveRecord::Schema.define(version: 20160509110911) do
   create_table "tests", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.text     "question"
+    t.text     "questions"
     t.text     "question_index"
-    t.text     "answer"
+    t.text     "answers"
     t.text     "answer_index"
     t.string   "type"
     t.integer  "time"

@@ -5,8 +5,11 @@
     <th>Trạng thái</th>
     <th>Số học viên</th>
     <th>Ngày tạo</th>
-    <th>Quản lý học viên</th>
-    <th>Thay đổi thông tin</th>
+    <% if @current_user.type == "Teacher" %>
+      <th>Quản lý học viên</th>
+      <th>Quản lý bài kiểm tra</th>
+      <th>Thay đổi thông tin</th>
+    <% end %>
   </tr>
   <% @courses.each do |course| %>
       <tr>
@@ -15,8 +18,11 @@
         <td><%= course.closed ? 'Đã đóng': 'Đang mở' %></td>
         <td><%= course.students.size %></td>
         <td><%= course.created_at.strftime("%F") %></td>
-        <td><%= link_to 'Quản lý', course_student_path(course) %></td>
-        <td><%= link_to 'Sửa', edit_course_path(course) %></td>
+        <% if @current_user.type == "Teacher" %>
+          <td><%= link_to 'Quản lý', course_student_path(course) %></td>
+          <td><%= link_to 'Quản lý', course_test_path(course) %></td>
+          <td><%= link_to 'Sửa', edit_course_path(course) %></td>
+        <% end %>
       </tr>
   <% end %>
   </tbody>

@@ -46,7 +46,7 @@
         </a>
       </li>
       <li>
-        <a href='<%= tests_path %>'>
+        <a href='<%= current_user.type == "Teacher" ? tests_path : do_tests_path  %>'>
           <i class='fa fa-file-text'></i>
           <span>Danh sách bài kiểm tra</span>
         </a>

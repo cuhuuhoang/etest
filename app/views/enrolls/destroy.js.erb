@@ -1,2 +1,2 @@
-$("#user-<%= @user.id %>").replaceWith("<%= escape_javascript(render :partial => "courses/user_row", :locals => {:user => @user, :course => @course }) %>");
-$('#total-students').html("<%= escape_javascript(render :partial => "courses/total_students", :locals => {:course => @course }) %>");
+$("#user-<%= @user.id %>").replaceWith("<%= escape_javascript(render :partial => "courses/users/user_row", :locals => {:user => @user, :course => @course }) %>");
+$('#total-students').html("<%= escape_javascript(render :partial => "courses/users/total_users", :locals => {:course => @course }) %>");

@@ -1,0 +1,4 @@
+$('#tests').html("<%= escape_javascript(render :partial => "courses/tests/tests", :locals => {:course => @course }) %>");
+$('#paginator').html("<%= escape_javascript(paginate(@tests, :remote => true)) %>");
+$('#tests_info').html("<%= escape_javascript(page_entries_info @tests, :entry_name => opposite_type) %>");
+

@@ -1,0 +1,2 @@
+$("#test-<%= @test.id %>").replaceWith("<%= escape_javascript(render :partial => "courses/tests/test_row", :locals => {:test => @test, :course => @course}) %>");
+$('#total-tests').html("<%= escape_javascript(render :partial => "courses/tests/total_tests", :locals => {:course => @course }) %>");

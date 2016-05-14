@@ -1,11 +1,12 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :student]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :student, :test]
 
   # GET /courses
   # GET /courses.json
-  def index(page_size: 10)
+  def index
     search_string = "%#{params[:q]}%"
-    @courses = current_user.courses.where("name like ? OR description like ?", search_string,search_string).page(params[:page]).per(page_size)
+    params[:page_size] = 10 if params[:page_size].nil?
+    @courses = current_user.courses.where("name like ? OR description like ?", search_string,search_string).page(params[:page]).per(params[:page_size])
 
     respond_to do |format|
       format.js
@@ -69,10 +70,36 @@ class CoursesController < ApplicationController
     end
   end
 
-  def student(page_size: 10)
+  def student
     search_string = "%#{params[:q]}%"
+    in_course = params[:in_course]
+    params[:page_size] = 10 if params[:page_size].nil?
     if @course.teacher_id ==current_user.id
-      @users = current_user.students_in_contact.where("full_name like ? OR username like ? OR email like ?", search_string,search_string,search_string).page(params[:page]).per(page_size)
+      if in_course
+        @users = @course.students.where("full_name like ? OR username like ? OR email like ?", search_string,search_string,search_string).page(params[:page]).per(params[:page_size])
+      else
+        @users = current_user.students_in_contact.where("full_name like ? OR username like ? OR email like ?", search_string,search_string,search_string).page(params[:page]).per(params[:page_size])
+      end
+    else
+      redirect_to(:action => "index")
+    end
+
+    respond_to do |format|
+      format.js
+      format.html
+    end
+  end
+
+  def test
+    search_string = "%#{params[:q]}%"
+    in_course = params[:in_course]
+    params[:page_size] = 10 if params[:page_size].nil?
+    if @course.teacher_id ==current_user.id
+      if in_course
+        @tests = @course.tests.where("name like ? OR description like ?", search_string,search_string).page(params[:page]).per(params[:page_size])
+      else
+        @tests = current_user.tests.where("name like ? OR description like ?", search_string,search_string).page(params[:page]).per(params[:page_size])
+      end
     else
       redirect_to(:action => "index")
     end

@@ -1,0 +1,20 @@
+<tr class="<%= cycle('even', 'odd') %>" id="test-<%= test.id %>">
+  <td><%= test.name %></td>
+  <td><%= test.description %></td>
+  <td><%= test.created_at %></td>
+  <td>
+    <% if current_user.type == "Teacher" && course.teacher_id == current_user.id && test.teacher_id == current_user.id %>
+        <% if test.is_test_in_course?(course) %>
+            <%= form_for(course.test_for_courses.find_by(test_id: test.id), html: {method: :delete }, remote:true) do |f| %>
+                <%= f.submit "Xóa khỏi lớp", class: "btn btn-danger btn-sm" %>
+            <% end %>
+        <% else %>
+            <%= form_for(course.test_for_courses.build, remote:true) do |f| %>
+                <div><%= hidden_field_tag :test_id, test.id %></div>
+                <div><%= hidden_field_tag :course_id, course.id %></div>
+                <%= f.submit "Thêm vào lớp", class: "btn btn-success btn-sm" %>
+            <% end %>
+        <% end %>
+    <% end %>
+  </td>
+</tr>
