@@ -430,6 +430,3 @@ DEPENDENCIES
   uglifier (= 2.5.3)
   unicorn (= 5.0.1)
   web-console (= 2.0.0.beta3)
-
-BUNDLED WITH
-   1.11.2
