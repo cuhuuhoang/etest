@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'pron/index'
+
   get 'teaches/search'
   resources :courses
   get 'courses/:id/student', to: 'courses#student',  as: 'course_student'
