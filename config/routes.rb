@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'teaches/search'
   resources :courses
   get 'courses/:id/student', to: 'courses#student',  as: 'course_student'
+  post 'courses/:id/student', to: 'courses#student',  as: 'course_student_post'
   get 'courses/:id/test', to: 'courses#test',  as: 'course_test'
 
   resources :tests
