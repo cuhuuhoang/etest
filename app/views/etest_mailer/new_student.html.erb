@@ -2,12 +2,12 @@
 
 <p>Bạn đã được giáo viên <%= @teacher.full_name %> thêm vào khóa học <%= @course.name %></p>
 
-<p>Tài khoản của bạn như sau <br />
-  Email: <%= @student.email %>
+<p>Tài khoản của bạn như sau: <br />
+  Email: <%= @student.email %><br />
   Mật khẩu: 12345678
 </p>
 
-<p>Làm ơn đăng nhập và thay đổi thông tin cá nhân</p>
-<p><%= link_to 'Thay đổi thông tin', edit_user_registration_path %></p>
+<p>Làm ơn đăng nhập và thay đổi thông tin cá nhân tại: </p>
+<p><%= link_to 'Thay đổi thông tin', edit_user_registration_url %></p>
 
 <p>Trân trọng cảm ơn !</p>

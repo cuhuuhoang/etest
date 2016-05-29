@@ -103,6 +103,8 @@ class CoursesController < ApplicationController
 
     end
 
+    params.delete :student_emails
+
     search_string = "%#{params[:q]}%"
     in_course = params[:in_course]
     params[:page_size] = 10 if params[:page_size].nil?
