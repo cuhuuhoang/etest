@@ -13,7 +13,7 @@ class FileUploader < CarrierWave::Uploader::Base
     storage :file
   end
 
-  if model.type == 'Picture'
+  # if model.type == 'Picture'
     include CarrierWave::MiniMagick
     process resize_to_limit: [400, 400]
     # Choose what kind of storage to use for this uploader:
@@ -31,9 +31,9 @@ class FileUploader < CarrierWave::Uploader::Base
     version :thumbnail do
       process resize_to_fill: [50, 50, 'Center']
     end
-  end
-
-  if model.type == 'Sound'
-
-  end
+  # end
+  #
+  # if model.type == 'Sound'
+  #
+  # end
 end
