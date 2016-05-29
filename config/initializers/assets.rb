@@ -15,4 +15,5 @@ Rails.application.config.assets.precompile += %w( mobile.css mobile.js)
 Rails.application.config.assets.precompile += %w( *.svg *.eot *.woff *.woff2 *.ttf *.otf )
 Rails.application.config.assets.precompile += %w( *.jpg *.jpeg *.png *.gif *.tiff )
 Rails.application.config.assets.precompile += %w( ckeditor/* )
+Rails.application.config.assets.precompile += %w( Moxie.swf Moxie.xap )
 

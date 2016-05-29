@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'new_student_courses/index'
+
+  get 'new_student_courses/create'
+
   get 'pron/index'
 
   get 'teaches/search'
@@ -14,6 +18,7 @@ Rails.application.routes.draw do
   resources :test_for_courses, only: [:create, :destroy]
   resources :do_tests, only: [:index, :create, :edit, :update]
 
+  resources :file_upload, only: [:create]
   devise_for :users, :controllers => { :registrations => "registrations" }
 
   root 'static_pages#home'

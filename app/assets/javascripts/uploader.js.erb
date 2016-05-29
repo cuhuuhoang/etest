@@ -1,0 +1,33 @@
+$.extend({
+  initUploader: function (settings) {
+    uploader = $(this)
+
+    uploader.pluploadQueue({
+      filters: [
+        {
+          title: 'Document files',
+          extensions: 'docx'
+        }
+      ],
+      runtimes: 'gears,flash,silverlight,browserplus,html5',
+      url: '<%= Rails.application.routes.url_helpers.file_upload_index_url(only_path: true) %>',
+      multipart_params: {
+        authenticity_token: settings.token
+      },
+      rename: false,
+      multiple_queues: true,
+      init: {
+        FilesAdded: function (up, files) {
+
+        },
+        UploadComplete: function (up, files) {
+          console.log('[UploadComplete]');
+        },
+        BeforeUpload: function (up, file) {
+
+        }
+      }
+    }).unbind('FilesAdded');
+
+  }
+})

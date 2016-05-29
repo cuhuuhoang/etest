@@ -37,15 +37,10 @@ class TestsController < ApplicationController
     @test = Test.new(test_params)
     @test.teacher_id = current_user.id
 
-    @test.questions = params["questions"].to_json
-    @test.answers = params["answers"].to_json
-
-    @answers =  parse_json(@test.answers)
-    @questions = parse_json(@test.questions)
     respond_to do |format|
       if @test.save
-        format.html { redirect_to @test, notice: 'Bài kiểm tra đã được khởi tạo.' }
-        format.json { render :show, status: :created, location: @test }
+        format.html { redirect_to edit_test_path(@test), notice: 'Bài kiểm tra đã được khởi tạo.' }
+        format.json { render :show, status: :created, location: edit_test_path(@test) }
       else
         format.html { render :new }
         format.json { render json: @test.errors, status: :unprocessable_entity }

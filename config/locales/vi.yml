@@ -8,7 +8,7 @@ vi:
       test: Bài kiểm tra
     attributes:
       user:
-        username: Tên đăng nhập
+        email: Email
         password: Mật khẩu
         password_confirmation: Mật khẩu xác nhận
         type: Loại người dùng

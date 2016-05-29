@@ -1,7 +1,230 @@
 <% provide(:title, "Sửa bài kiểm tra") %>
 
-<%= render 'form' %>
+<%= form_for(@test) do |f| %>
+<div class="box box-primary">
+  <div class="box-header">
+    <h3 class="box-title">Thông tin bài kiểm tra</h3>
+  </div>
+      <div class="box-body">
+        <%= render :partial => "layouts/errors", :locals => {:errors => @test.errors }%>
+        <!--:name, :description, :question, :answer, :time-->
+        <div class="form-group">
+          <%= f.label :name %><br />
+          <%= f.text_field :name, :class => "form-control" %>
+        </div>
 
+        <div class="form-group">
+          <%= f.label :description %><br />
+          <%= f.text_field :description, :class => "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :time %><br />
+          <%= f.text_field :time, :class => "form-control" %>
+        </div>
+
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Cập nhật</button>
+        </div>
+        <%= link_to "Quay lại", tests_path %>
+      </div>
+</div>
+
+<div class="box box-primary">
+  <div class="box-header">
+    <h3 class="box-title">Cập nhật câu hỏi</h3>
+  </div>
+  <div class="box-body">
+
+    <div class="nav-tabs-custom">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab_reading" data-toggle="tab">Reading</a></li>
+        <li class=""><a href="#tab_listening" data-toggle="tab">Listening</a></li>
+        <li class=""><a href="#tab_speaking" data-toggle="tab">Speaking</a></li>
+        <li class=""><a href="#tab_writing" data-toggle="tab">Writing</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab_reading">
+          <div class="form-group" id="questions_group">
+            <%= f.label :questions %><br />
+            <% @questions.size.times do |index| %>
+                <div class="row question_item">
+                  <div class="col-sm-1">Câu <%= index+1 %>: </div>
+                  <div class="col-sm-11">
+                    <input class="form-control" type="text" name="questions[<%= index+1 %>]" id="test_question<%= index+1 %>" value="<%= @questions[(index+1).to_s] %>">
+                  </div>
+                </div>
+            <% end %>
+          </div>
+          <div class="row text-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Thêm tài nguyên</button>
+              <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#" data-tab="reading" data-res="extra" data-type="textarea">Văn bản</a></li>
+                <li><a href="#" data-tab="reading" data-res="extra" data-type="sound">Âm thanh</a></li>
+                <li><a href="#" data-tab="reading" data-res="extra" data-type="image">Hình ảnh</a></li>
+                <li><a href="#" data-tab="reading" data-res="extra" data-type="youtube">Youtube</a></li>
+              </ul>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Thêm câu hỏi</button>
+              <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#" data-tab="reading" data-res="question" data-type="text">Text</a></li>
+                <li><a href="#" data-tab="reading" data-res="question" data-type="textarea">Văn bản</a></li>
+                <li><a href="#" data-tab="reading" data-res="question" data-type="multiple">Nhiều lựa chọn</a></li>
+                <li><a href="#" data-tab="reading" data-res="question" data-type="single">Chọn một</a></li>
+                <li><a href="#" data-tab="reading" data-res="question" data-type="truefalse">Đúng/sai</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="form-group" id="answers_group">
+            <%= f.label :answers %><br />
+            <% @answers.size.times do |index| %>
+                <div class="row answer_item">
+                  <div class="col-sm-1">Câu <%= index+1 %>: </div>
+                  <div class="col-sm-11">
+                    <input class="form-control" type="text" name="answers[<%= index+1 %>]" id="test_answer<%= index+1 %>" value="<%= @answers[(index+1).to_s] %>">
+                  </div>
+                </div>
+            <% end %>
+          </div>
+          <div class="row text-center">
+            <button type="button" class="btn btn-primary" onclick="add_answer(1)">Thêm 1 dòng</button>
+            <button type="button" class="btn btn-primary" onclick="add_answer(10)">Thêm 10 dòng</button>
+            <button type="button" class="btn btn-danger" onclick="remove_answer(1)">Xóa 1 dòng</button>
+            <button type="button" class="btn btn-danger" onclick="remove_answer(10)">Xóa 10 dòng</button>
+          </div>
+        </div><!-- /.tab-pane -->
+        <div class="tab-pane" id="tab_listening">
+          <div class="form-group" id="questions_group">
+            <%= f.label :questions %><br />
+            <% @questions.size.times do |index| %>
+                <div class="row question_item">
+                  <div class="col-sm-1">Câu <%= index+1 %>: </div>
+                  <div class="col-sm-11">
+                    <input class="form-control" type="text" name="questions[<%= index+1 %>]" id="test_question<%= index+1 %>" value="<%= @questions[(index+1).to_s] %>">
+                  </div>
+                </div>
+            <% end %>
+          </div>
+          <div class="row text-center">
+            <button type="button" class="btn btn-primary" onclick="add_question(1)">Thêm 1 dòng</button>
+            <button type="button" class="btn btn-primary" onclick="add_question(10)">Thêm 10 dòng</button>
+            <button type="button" class="btn btn-danger" onclick="remove_question(1)">Xóa 1 dòng</button>
+            <button type="button" class="btn btn-danger" onclick="remove_question(10)">Xóa 10 dòng</button>
+          </div>
+          <div class="form-group" id="answers_group">
+            <%= f.label :answers %><br />
+            <% @answers.size.times do |index| %>
+                <div class="row answer_item">
+                  <div class="col-sm-1">Câu <%= index+1 %>: </div>
+                  <div class="col-sm-11">
+                    <input class="form-control" type="text" name="answers[<%= index+1 %>]" id="test_answer<%= index+1 %>" value="<%= @answers[(index+1).to_s] %>">
+                  </div>
+                </div>
+            <% end %>
+          </div>
+          <div class="row text-center">
+            <button type="button" class="btn btn-primary" onclick="add_answer(1)">Thêm 1 dòng</button>
+            <button type="button" class="btn btn-primary" onclick="add_answer(10)">Thêm 10 dòng</button>
+            <button type="button" class="btn btn-danger" onclick="remove_answer(1)">Xóa 1 dòng</button>
+            <button type="button" class="btn btn-danger" onclick="remove_answer(10)">Xóa 10 dòng</button>
+          </div>
+        </div><!-- /.tab-pane -->
+        <div class="tab-pane" id="tab_speaking">
+          <div class="form-group" id="questions_group">
+            <%= f.label :questions %><br />
+            <% @questions.size.times do |index| %>
+                <div class="row question_item">
+                  <div class="col-sm-1">Câu <%= index+1 %>: </div>
+                  <div class="col-sm-11">
+                    <input class="form-control" type="text" name="questions[<%= index+1 %>]" id="test_question<%= index+1 %>" value="<%= @questions[(index+1).to_s] %>">
+                  </div>
+                </div>
+            <% end %>
+          </div>
+          <div class="row text-center">
+            <button type="button" class="btn btn-primary" onclick="add_question(1)">Thêm 1 dòng</button>
+            <button type="button" class="btn btn-primary" onclick="add_question(10)">Thêm 10 dòng</button>
+            <button type="button" class="btn btn-danger" onclick="remove_question(1)">Xóa 1 dòng</button>
+            <button type="button" class="btn btn-danger" onclick="remove_question(10)">Xóa 10 dòng</button>
+          </div>
+          <div class="form-group" id="answers_group">
+            <%= f.label :answers %><br />
+            <% @answers.size.times do |index| %>
+                <div class="row answer_item">
+                  <div class="col-sm-1">Câu <%= index+1 %>: </div>
+                  <div class="col-sm-11">
+                    <input class="form-control" type="text" name="answers[<%= index+1 %>]" id="test_answer<%= index+1 %>" value="<%= @answers[(index+1).to_s] %>">
+                  </div>
+                </div>
+            <% end %>
+          </div>
+          <div class="row text-center">
+            <button type="button" class="btn btn-primary" onclick="add_answer(1)">Thêm 1 dòng</button>
+            <button type="button" class="btn btn-primary" onclick="add_answer(10)">Thêm 10 dòng</button>
+            <button type="button" class="btn btn-danger" onclick="remove_answer(1)">Xóa 1 dòng</button>
+            <button type="button" class="btn btn-danger" onclick="remove_answer(10)">Xóa 10 dòng</button>
+          </div>
+        </div><!-- /.tab-pane -->
+        <div class="tab-pane" id="tab_writing">
+          <div class="form-group" id="questions_group">
+            <%= f.label :questions %><br />
+            <% @questions.size.times do |index| %>
+                <div class="row question_item">
+                  <div class="col-sm-1">Câu <%= index+1 %>: </div>
+                  <div class="col-sm-11">
+                    <input class="form-control" type="text" name="questions[<%= index+1 %>]" id="test_question<%= index+1 %>" value="<%= @questions[(index+1).to_s] %>">
+                  </div>
+                </div>
+            <% end %>
+          </div>
+          <div class="row text-center">
+            <button type="button" class="btn btn-primary" onclick="add_question(1)">Thêm 1 dòng</button>
+            <button type="button" class="btn btn-primary" onclick="add_question(10)">Thêm 10 dòng</button>
+            <button type="button" class="btn btn-danger" onclick="remove_question(1)">Xóa 1 dòng</button>
+            <button type="button" class="btn btn-danger" onclick="remove_question(10)">Xóa 10 dòng</button>
+          </div>
+          <div class="form-group" id="answers_group">
+            <%= f.label :answers %><br />
+            <% @answers.size.times do |index| %>
+                <div class="row answer_item">
+                  <div class="col-sm-1">Câu <%= index+1 %>: </div>
+                  <div class="col-sm-11">
+                    <input class="form-control" type="text" name="answers[<%= index+1 %>]" id="test_answer<%= index+1 %>" value="<%= @answers[(index+1).to_s] %>">
+                  </div>
+                </div>
+            <% end %>
+          </div>
+          <div class="row text-center">
+            <button type="button" class="btn btn-primary" onclick="add_answer(1)">Thêm 1 dòng</button>
+            <button type="button" class="btn btn-primary" onclick="add_answer(10)">Thêm 10 dòng</button>
+            <button type="button" class="btn btn-danger" onclick="remove_answer(1)">Xóa 1 dòng</button>
+            <button type="button" class="btn btn-danger" onclick="remove_answer(10)">Xóa 10 dòng</button>
+          </div>
+        </div><!-- /.tab-pane -->
+      </div><!-- /.tab-content -->
+    </div>
+
+
+
+    <div class="box-footer">
+      <button type="submit" class="btn btn-primary">Cập nhật</button>
+    </div>
+    <%= link_to "Quay lại", tests_path %>
+  </div>
+</div>
+
+<% end %>
 <div class="box box-primary">
   <div class="box-header">
     <h3 class="box-title">Xóa bài kiểm tra</h3>
@@ -13,3 +236,81 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  $('.dropdown-menu a').click(function (event)
+  {
+    event.preventDefault();
+    var type = $(this).attr('data-type');
+    var res = $(this).attr('data-res');
+    var tab = $(this).attr('data-tab');
+
+    if (res == 'extra'){
+      if(type == 'textarea'){
+
+      }
+      else if(type == 'sound') {
+
+      }
+      else if(type == 'image') {
+
+      }
+      else if (type == 'youtube') {
+
+      }
+    }
+    else {//question
+
+
+    }
+
+    alert(res+'-'+type);
+  });
+
+
+
+
+
+
+  //old
+  function add_question(number){
+    for (i=0; i<number ; i++){
+      next_question = $("#questions_group .question_item").length +1;
+      $("#questions_group").append("" +
+          "<div class=\"row question_item\">"+
+          "<div class=\"col-sm-1\">Câu "+next_question +": </div>"+
+          "<div class=\"col-sm-11\">"+
+          "<input class=\"form-control\" type=\"text\" name=\"questions["+next_question+"]\" id=\"test_question"+next_question+"\" >"+
+          "</div>"+
+          "</div>"+
+          "");
+    }
+  }
+
+  function remove_question(number){
+    for (i=0; i<number ; i++) {
+      $('#questions_group .question_item').last().remove();
+    }
+  }
+
+
+  function add_answer(number){
+    for (i=0; i<number ; i++){
+      next_answer = $("#answers_group .answer_item").length +1;
+      $("#answers_group").append("" +
+          "<div class=\"row answer_item\">"+
+          "<div class=\"col-sm-1\">Câu "+next_answer +": </div>"+
+          "<div class=\"col-sm-11\">"+
+          "<input class=\"form-control\" type=\"text\" name=\"answers["+next_answer+"]\" id=\"test_answer"+next_answer+"\" >"+
+          "</div>"+
+          "</div>"+
+          "");
+    }
+  }
+
+  function remove_answer(number){
+    for (i=0; i<number ; i++) {
+      $('#answers_group .answer_item').last().remove();
+    }
+  }
+</script>

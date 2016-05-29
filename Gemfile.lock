@@ -284,6 +284,8 @@ GEM
       shellany (~> 0.0)
     orm_adapter (0.5.0)
     pg (0.17.1)
+    plupload-rails (1.2.1)
+      rails (>= 3.1)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -416,6 +418,7 @@ DEPENDENCIES
   mini_magick (= 3.8.0)
   minitest-reporters (= 1.0.5)
   pg (= 0.17.1)
+  plupload-rails
   puma (= 2.11.1)
   rack-livereload
   rails (= 4.2.5)
@@ -430,3 +433,6 @@ DEPENDENCIES
   uglifier (= 2.5.3)
   unicorn (= 5.0.1)
   web-console (= 2.0.0.beta3)
+
+BUNDLED WITH
+   1.11.2

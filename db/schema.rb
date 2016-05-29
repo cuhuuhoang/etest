@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509110911) do
+ActiveRecord::Schema.define(version: 20160524114101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,27 @@ ActiveRecord::Schema.define(version: 20160509110911) do
 
   add_index "enrolls", ["course_id"], name: "index_enrolls_on_course_id", using: :btree
   add_index "enrolls", ["student_id"], name: "index_enrolls_on_student_id", using: :btree
+
+  create_table "file_uploads", force: :cascade do |t|
+    t.string   "file"
+    t.integer  "attachment_id"
+    t.string   "attachment_type"
+    t.string   "type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "file_uploads", ["attachment_type", "attachment_id"], name: "index_file_uploads_on_attachment_type_and_attachment_id", using: :btree
+
+  create_table "new_student_courses", force: :cascade do |t|
+    t.integer  "course_id"
+    t.integer  "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "new_student_courses", ["course_id"], name: "index_new_student_courses_on_course_id", using: :btree
+  add_index "new_student_courses", ["student_id"], name: "index_new_student_courses_on_student_id", using: :btree
 
   create_table "teaches", force: :cascade do |t|
     t.integer  "teacher_id"
@@ -109,7 +130,6 @@ ActiveRecord::Schema.define(version: 20160509110911) do
     t.integer  "failed_attempts",        default: 0,         null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.string   "username"
     t.string   "full_name"
     t.string   "avatar"
     t.string   "skype"
@@ -127,6 +147,5 @@ ActiveRecord::Schema.define(version: 20160509110911) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
-  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

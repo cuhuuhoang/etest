@@ -5,6 +5,8 @@ class Test < ActiveRecord::Base
   has_many :test_for_courses, dependent: :destroy
   has_many :courses, through: :test_for_courses
 
+  has_many :sounds, as: :attachment
+  has_many :pictures, as: :attachment
   belongs_to :teacher
 
   validates_presence_of :name
@@ -24,3 +26,6 @@ class Test < ActiveRecord::Base
     test_for_courses.find_by(course_id: course.id).destroy
   end
 end
+
+# sao ko lam
+# table question, table answers => Test has questions ? Optimize model :v

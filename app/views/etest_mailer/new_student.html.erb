@@ -1,0 +1,10 @@
+<p>Chào mừng <%= @student.email %>!</p>
+
+<p>Bạn đã được giáo viên <%= @teacher.full_name %> thêm vào khóa học <%= @course.name %></p>
+
+<p>Tài khoản của bạn như sau <br />
+  Email: <%= @student.email %>
+  Mật khẩu: 12345678
+</p>
+
+<p><%= link_to 'Đăng nhập', new_user_session_url %></p>

@@ -71,22 +71,54 @@ class CoursesController < ApplicationController
   end
 
   def student
+    student_emails = params[:student_emails]
+    if !student_emails.nil?
+      emails_list = student_emails.split(",").map(&:strip)
+      success_email_list = []
+      warning_email_list = []
+      error_email_list = []
+      emails_list.each do |email|
+        if !is_a_valid_email?(email)
+          error_email_list << email
+        elsif User.exists?(email: email)
+          Enroll.process_student_email(email, current_user, @course)
+          warning_email_list << email
+        else
+          Enroll.process_student_email(email, current_user, @course)
+          success_email_list << email
+        end
+      end
+      if error_email_list.size > 0
+        flash[:error] = "Những email sai format<br />"
+        error_email_list.each { |email| flash[:error] << "#{email}<br />"}
+      end
+      if warning_email_list.size > 0
+        flash[:warning] = "Những email đã có tài khoản<br />"
+        warning_email_list.each { |email| flash[:warning] << "#{email}<br />"}
+      end
+      if success_email_list.size > 0
+        flash[:success] = "Những email tạo tài khoản thành công<br />"
+        success_email_list.each { |email| flash[:success] << "#{email}<br />"}
+      end
+
+    end
+
     search_string = "%#{params[:q]}%"
     in_course = params[:in_course]
     params[:page_size] = 10 if params[:page_size].nil?
     if @course.teacher_id ==current_user.id
       if in_course
-        @users = @course.students.where("full_name like ? OR username like ? OR email like ?", search_string,search_string,search_string).page(params[:page]).per(params[:page_size])
+        @users = @course.students.where("full_name like ? OR email like ?", search_string,search_string).page(params[:page]).per(params[:page_size])
       else
-        @users = current_user.students_in_contact.where("full_name like ? OR username like ? OR email like ?", search_string,search_string,search_string).page(params[:page]).per(params[:page_size])
+        @users = current_user.students_in_contact.where("full_name like ? OR email like ?", search_string,search_string).page(params[:page]).per(params[:page_size])
       end
     else
       redirect_to(:action => "index")
     end
 
     respond_to do |format|
-      format.js
       format.html
+      format.js
     end
   end
 
@@ -119,5 +151,9 @@ class CoursesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
       params.require(:course).permit(:name, :description, :closed)
+    end
+
+    def is_a_valid_email?(email)
+      (email =~ /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i)
     end
 end

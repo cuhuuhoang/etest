@@ -8,7 +8,6 @@
 
 admin = User.new(
     :email                 => "huuhoangcu@gmail.com",
-    :username              => "huuhoangcu",
     :full_name             => "Cù Hữu Hoàng",
     :type                  => "Teacher",
     :is_admin              => true,
@@ -21,7 +20,6 @@ admin.save!
 1.upto(2) do |i|
   teacher = User.new(
       :email                 => "teacher#{i}@exam.edu.vn",
-      :username              => "teacher#{i}",
       :full_name             => "Test Teacher #{i}",
       :type                  => "Teacher",
       :is_admin              => false,
@@ -48,7 +46,6 @@ admin.save!
   1.upto(100) do |j|
     student = User.new(
         :email                 => "student#{i}-#{j}@exam.edu.vn",
-        :username              => "student#{i}-#{j}",
         :full_name             => "Test Student #{i}-#{j}",
         :type                  => "Student",
         :is_admin              => false,
@@ -84,7 +81,6 @@ admin.save!
   101.upto(170) do |j|
     student = User.new(
         :email                 => "student#{i}-#{j}@exam.edu.vn",
-        :username              => "student#{i}-#{j}",
         :full_name             => "Test Student #{i}-#{j}",
         :type                  => "Student",
         :is_admin              => false,
@@ -100,7 +96,6 @@ admin.save!
   171.upto(220) do |j|
     student = User.new(
         :email                 => "student#{i}-#{j}@exam.edu.vn",
-        :username              => "student#{i}-#{j}",
         :full_name             => "Test Student #{i}-#{j}",
         :type                  => "Student",
         :is_admin              => false,

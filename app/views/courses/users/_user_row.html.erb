@@ -1,7 +1,6 @@
 <tr class="<%= cycle('even', 'odd') %>" id="user-<%= user.id %>">
   <td><%= user.full_name %></td>
   <td><%= user.email %></td>
-  <td><%= user.username %></td>
   <td><%= user.created_at %></td>
   <td>
     <% unless current_user.id == user.id %>

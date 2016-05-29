@@ -18,6 +18,7 @@ gem 'fog', '1.36.0'
 gem 'devise', '3.4.1'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'kaminari'
+gem 'plupload-rails'
 
 group :development, :test do
   gem 'byebug', '3.4.0'

@@ -4,12 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
 
-  # primary_key = :username
   TYPES = [:teacher, :student]
 
   mount_uploader :avatar, PictureUploader
 
-  validates_uniqueness_of :username
+
   validates_presence_of :full_name
   validates_presence_of :type
   validate :avatar_size

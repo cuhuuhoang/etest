@@ -1,5 +1,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require ./bootstrap
+//= require moxie
+//= require plupload.dev
+//= require plupload.settings
+//= require jquery.plupload.queue
+//= require uploader
 //= require ./AdminLTE/app
 //= require ./AdminLTE/dashboard
